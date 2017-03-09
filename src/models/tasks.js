@@ -1,4 +1,3 @@
-var sqlHelper = require("./sqlHelper");
 /**
  * Write up methods to perform operations on tasks table.
  */
@@ -8,7 +7,7 @@ var sqlHelper = require("./sqlHelper");
  * @param callback callback handler with error and result.
  */
 exports.getTasks = function(callback) {
-    sqlHelper.getAllByFilter("tasks", null, callback);
+
 };
 
 /**
@@ -17,14 +16,7 @@ exports.getTasks = function(callback) {
  * @param callback callback handler with error and result.
  */
 exports.getTaskById = function(id, callback) {
-    var whereClause = [{
-        column : "id",
-        value : parseInt(id)
-    }];
-    var filters = {};
-    filters.whereClause = whereClause;
 
-    sqlHelper.getAllByFilter("tasks", filters, callback);
 };
 
 /**
@@ -34,14 +26,7 @@ exports.getTaskById = function(id, callback) {
  * @param callback callback handler with error and result.
  */
 exports.updateTaskById = function(id, task, callback) {
-    var whereClause = [{
-        column : "id",
-        value : parseInt(id)
-    }];
-    var filters = {};
-    filters.whereClause = whereClause;
 
-    sqlHelper.updateRecordHelper("tasks", filters, task, callback);
 };
 
 /**
@@ -50,14 +35,7 @@ exports.updateTaskById = function(id, task, callback) {
  * @param callback callback handler with error and result.
  */
 exports.deleteTaskById = function(id, callback) {
-    var whereClause = [{
-        column : "id",
-        value : parseInt(id)
-    }];
-    var filters = {};
-    filters.whereClause = whereClause;
 
-    sqlHelper.deleteRecordHelper("tasks", filters, callback);
 };
 
 /**
@@ -66,7 +44,7 @@ exports.deleteTaskById = function(id, callback) {
  * @param callback callback handler with error and result.
  */
 exports.createTask = function(task, callback) {
-    sqlHelper.createRecordHelper("tasks", task, callback);
+
 };
 
 /**
@@ -74,5 +52,5 @@ exports.createTask = function(task, callback) {
  * @param callback callback handler with error and result.
  */
 exports.setupTasksTable = function (callback) {
-    sqlHelper.executeSQL("create table if not exists tasks (id integer, title text, description text);", null, callback);
+
 };

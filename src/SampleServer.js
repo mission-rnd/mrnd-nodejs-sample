@@ -1,12 +1,3 @@
-var express = require('express');
-var path = require('path');
-var app = express();
-
-/* Use the tasks route in this app to expose the tasks functionality for base_url/tasks
- */
-
-//To be removed - start
-
 /**
  * Task model - id (integer)
  *              title(text)
@@ -92,31 +83,7 @@ var app = express();
  */
 var tasks = require('./routes/tasks');
 
-//Use required body-parser's . json,url ecnoded etc .
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-
-//Use app tasks router .
-app.use("/tasks", tasks);
-
-/* catch 404
-   return a error message with json {"status":404,"message":"The requested URL was not found"}
-  */
-
-app.get('*', function (req, res) {
-    res.status(404);
-    res.send({
-        "status": 404,
-        "message": "The requested URL was not found"
-    });
-});
-// To be removed - end
-
 var server = app.listen(3001, function () {
     var port = server.address().port;
-
     console.log("Example app listening at port %s", port)
 });
